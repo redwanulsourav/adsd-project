@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Orders
+        </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/base.css') }}" >
+        <meta charsest="utf-8" />
+    </head>
+
+    <body>
+        <div id="banner">
+            <div id="logo">
+
+            </div>
+            <div id="menu">
+                <div>
+                    Profile
+                </div>
+                <div>
+                    <a href="{{ url_for('logout') }}">
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="pseudocontent">
+            <div id="sidemenu">
+                <a href=" {{ url_for('add_new_order') }}"
+                {% if data and data['active_page']=='add_new_order' %} class='sidemenuitem_selected' {% endif %}>
+                    <div class="sidemenuitem">
+                        New Order 
+                    </div>
+                </a>
+
+                <a href=" {{ url_for('view_all_orders') }}"
+                    {% if data and data['active_page']=='view_all_orders' %} class='sidemenuitem_selected' {% endif %}>    
+                    <div class="sidemenuitem">
+                        Orders 
+                    </div>
+                </a>
+                <a href=" {{ url_for('get_order_id') }}"
+                {% if data and data['active_page']=='get_order_id' %} class='sidemenuitem_selected' {% endif %}>
+                    <div class="sidemenuitem">
+                        Update Order 
+                    </div>
+                </a>
+            </div>
+            <div id="content"> <!-- the page that uses base.html should define style for content -->
+                {% block content %} {% endblock %}
+            </div>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,18 @@
+{% for order in data['orders'] %}
+    <div class="panel panel-green">
+        <div class="panel-body">
+            <div class = "col-sm-12">
+                Customer:  {{ order.customer_name }} <br>
+                Product:  {{ order.product_name }} <br>
+                Quantity:  
+                {% if order.quantity %}
+                    {{ order.quantity }}
+                {% else %}
+                    Not updated 
+                {% endif %}
+                <br>
+                <a href="{{ url_for('edit_order', order_id=order._id) }}">Edit Order</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
